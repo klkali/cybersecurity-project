@@ -1,0 +1,32 @@
+{% extends 'scanner/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card p-4">
+        <h2 class="text-center text-neon"><i class="fas fa-link"></i> Phishing Detection Results</h2>
+        <hr class="bg-light">
+
+        <div class="card-body">
+            <div class="mb-3">
+                <h5 class="text-light">URL:</h5>
+                <p class="text-warning">{{ url }}</p>
+            </div>
+            <div class="mb-3">
+                <h5 class="text-light">Status:</h5>
+                <p class="{% if is_phishing %}text-danger{% else %}text-success{% endif %}">
+                    {% if is_phishing %} Unsafe {% else %} Safe {% endif %}
+                </p>
+            </div>
+            <div class="mb-3">
+                <h5 class="text-light">Reason:</h5>
+                <p class="text-info">{{ reason }}</p>
+            </div>
+        </div>
+        
+        <div class="card-footer text-center">
+            <a href="{% url 'phishing_detection' %}" class="btn btn-primary"><i class="fas fa-search"></i> Scan Another URL</a>
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary mt-2"><i class="fas fa-home"></i> Go to Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'scanner/base.html' %}
+
+{% block content %}
+<h1 class="text-center mb-4"><i class="fas fa-tachometer-alt"></i> Welcome, {{ user.username }} 👋</h1>
+
+<div class="row">
+    <!-- Port Scanning Card -->
+    <div class="col-md-6 mb-4">
+        <div class="card bg-dark border-secondary">
+            <div class="card-body text-center">
+                <i class="fas fa-network-wired fa-3x text-info"></i>
+                <h5 class="card-title mt-3">Port Scanning</h5>
+                <p class="card-text">Scan ports on any IP address or domain to identify open ports and services.</p>
+                <a href="{% url 'port_scan' %}" class="btn btn-info"><i class="fas fa-search"></i> Start Scan</a>
+            </div>
+        </div>
+    </div>
+ <!-- Placeholder for Future Features (e.g., Malware Analysis) -->
+ <div class="col-md-6 mb-4">
+    <div class="card bg-dark border-secondary">
+        <div class="card-body text-center">
+            <i class="fas fa-bug fa-3x text-warning"></i>
+            <h5 class="card-title mt-3">Malware Analysis</h5>
+            <p class="card-text">Upload files to analyze and detect potential malware threats.</p>
+            <a href="{% url 'malware_analysis' %}" class="btn btn-warning"><i class="fas fa-upload"></i> Analyze File</a>
+        </div>
+    </div>
+ </div>
+ <div class="col-md-6 mb-4">
+    <div class="card bg-dark border-secondary">
+        <div class="card-body text-center">
+            <!-- Changed icon to fa-link -->
+            <i class="fas fa-link fa-3x text-warning"></i>
+            <h5 class="card-title mt-3">Phishing Link Detector</h5>
+            <p class="card-text">Identify malicious links and ensure safe browsing.</p>
+            <a href="{% url 'phishing_detection' %}" class="btn btn-primary">Check Links</a>
+        </div>
+    </div>
+</div>
+
+</div> 
+   
+{% endblock %}

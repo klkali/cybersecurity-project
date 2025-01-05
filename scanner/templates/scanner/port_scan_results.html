@@ -1,0 +1,48 @@
+{% extends 'scanner/base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card p-4">
+            <h3 class="card-title text-center text-neon"><i class="fas fa-network-wired"></i> Port Scanning</h3>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="target" class="form-label text-light">Enter Target (IP/Domain)</label>
+                    <input type="text" name="target" class="form-control" placeholder="e.g., 192.168.1.1 or example.com">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Start Scan</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5">
+    {% if open_ports %}
+    <div class="card">
+        <div class="card-header text-neon">Scan Results</div>
+        <div class="card-body">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>Port</th>
+                        <th>State</th>
+                        <th>Service</th>
+                        <th>Version</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for port in open_ports %}
+                    <tr>
+                        <td>{{ port.port }}</td>
+                        <td>{{ port.state }}</td>
+                        <td>{{ port.service }}</td>
+                        <td>{{ port.version }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
